@@ -46,7 +46,8 @@ router.post('/', asyncHandler(async (req, res) => {
             const { posterName } = req.body;
             let imageUrl = 'no_url';
             if (req.file) {
-                imageUrl = `http://localhost:3000/image/poster/${req.file.filename}`;
+                // imageUrl = `http://localhost:3000/image/poster/${req.file.filename}`;
+                imageUrl = req.imageUrl;
             }
 
             if (!posterName) {

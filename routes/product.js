@@ -79,10 +79,14 @@ router.post('/', asyncHandler(async (req, res) => {
             // Iterate over the file fields
             const fields = ['image1', 'image2', 'image3', 'image4', 'image5'];
             fields.forEach((field, index) => {
-                if (req.files[field] && req.files[field].length > 0) {
-                    const file = req.files[field][0];
-                    const imageUrl = `http://localhost:3000/image/products/${file.filename}`;
-                    imageUrls.push({ image: index + 1, url: imageUrl });
+            //     if (req.files[field] && req.files[field].length > 0) {
+            //         const file = req.files[field][0];
+            //         const imageUrl = `http://localhost:3000/image/products/${file.filename}`;
+            //         imageUrls.push({ image: index + 1, url: imageUrl });
+            //     }
+            // });
+                if (req.imageUrls[field]) {
+                    imageUrls.push({ image: index + 1, url: req.imageUrls[field] });
                 }
             });
 
