@@ -21,10 +21,12 @@ router.post('/send-notification', asyncHandler(async (req, res) => {
             'en': title
         },
         included_segments: ['All'],
+        android_sound: "notify_sound",
         ...(imageUrl && { big_picture: imageUrl })
     };
 
     const response = await client.createNotification(notificationBody);
+    console.log("OneSignal Response:", response.body);
     const notificationId = response.body.id;
     console.log('Notification sent to all users:', notificationId);
     const notification = new Notification({ notificationId, title,description,imageUrl });
