@@ -22,6 +22,8 @@ router.post('/send-notification', asyncHandler(async (req, res) => {
         },
         included_segments: ['All'],
         android_sound: "notify_sound",
+        android_priority: 10,
+        priority: 10,
         ...(imageUrl && { big_picture: imageUrl })
     };
 
